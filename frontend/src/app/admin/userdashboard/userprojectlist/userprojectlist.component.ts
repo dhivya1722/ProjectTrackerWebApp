@@ -47,7 +47,7 @@ export class UserprojectlistComponent implements OnInit {
       alert("Status Updated Successfully")
       // this.projectList=data;  
 
-    },error=>alert("Status update failed"))
+    })
   }
 
   getStatusFromStatusCode(code : number) : string {
