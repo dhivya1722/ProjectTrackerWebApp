@@ -5,13 +5,14 @@ import { Project } from '../project';
 import { User } from '../user';
 import { Observable } from 'rxjs';
 import { SignupData } from '../signup-data';
+import { Projectwithstatus } from '../projectwithstatus';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
   
-
+  private updateStatusAPIPath="http://localhost:8084/user/updateprojectstatus"
   private getAllProjectForUserAPIPath="http://localhost:8084/user/getprojectforuser"
  private getAllUsersAPIPath="http://localhost:8084/user/getallusers"
   private addProjectAPIPath="http://localhost:8084/user/addproject"
@@ -93,7 +94,20 @@ export class ProjectService {
   }
 
   
+  updateProjectStatus(project : Projectwithstatus , email : string , newStatusCode : number):Observable<object>{
 
+    let params = new HttpParams()
+    params = params.append("email" , email)
+    params = params.append("projectname" , project.projectname)
+    params = params.append("projectid" , "1")
+    params = params.append("status" , newStatusCode)
+
+ 
+     
+    return this.httpClient.post(`${this.updateStatusAPIPath}` , null , {params});
+
+
+  }
 
 
 

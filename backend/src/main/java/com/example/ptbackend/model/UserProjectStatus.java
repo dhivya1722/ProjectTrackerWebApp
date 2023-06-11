@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name="userprojectstatus")
 @Table(name="userprojectstatus")
 @Data
 @NoArgsConstructor
@@ -22,8 +22,6 @@ public class UserProjectStatus {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
-
 	private int id;
 	
 	@Column(name="email",nullable=false )
@@ -33,11 +31,11 @@ public class UserProjectStatus {
 	private int projectid;
 	
 	@Column(name="projectname",nullable=false )
-	private String name;
+	private String projectname;
 	
 	
 	@Column(name="status",nullable=false )
-	private int projectStatus;
+	private int status;
 
 
 	public int getId() {
@@ -70,32 +68,32 @@ public class UserProjectStatus {
 	}
 
 
-	public String getName() {
-		return name;
+	public String getProjectname() {
+		return projectname;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProjectname(String projectname) {
+		this.projectname = projectname;
 	}
 
 
-	public int getProjectStatus() {
-		return projectStatus;
+	public int getStatus() {
+		return status;
 	}
 
 
-	public void setProjectStatus(int projectStatus) {
-		this.projectStatus = projectStatus;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 
-	public UserProjectStatus(String email, int projectid, String name, int projectStatus) {
+	public UserProjectStatus(String email, int projectid, String projectname, int status) {
 		super();
 		this.email = email;
 		this.projectid = projectid;
-		this.name = name;
-		this.projectStatus = projectStatus;
+		this.projectname = projectname;
+		this.status = status;
 	}
 
 

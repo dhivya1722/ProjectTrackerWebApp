@@ -74,8 +74,8 @@ public class ProjectController {
 		List<Project> userProjects= new ArrayList<Project>();
 		for(int index=0 ;index<projectsCount; index++){ 
 			UserProjectStatus projectStatus = userProjectsStatus.get(index);
-			Project project = projectrepo.findByprojectname(projectStatus.getName());
-			project.setStatus(projectStatus.getProjectStatus());
+			Project project = projectrepo.findByprojectname(projectStatus.getProjectname());
+			project.setStatus(projectStatus.getStatus());
 	        userProjects.add(project);
 	    } 
 		
@@ -234,8 +234,25 @@ public class ProjectController {
 			return ResponseEntity.ok(newProject);
 		}
 	}
+	
+//@RequestMapping(method = RequestMethod.POST, value = "signup")
+	@RequestMapping(method = RequestMethod.POST, value = "updateprojectstatus")
+	public ResponseEntity<?> updateProjectStatus(UserProjectStatus projectStatus){
+		try {
+			System.out.println(projectStatus.getProjectname());
+		
+			System.out.println(projectStatus.getEmail());
+			UserProjectStatus projectStatusTableObj = userProjectStatusRepo.findByEmailAndProjectname(projectStatus.getEmail() , projectStatus.getProjectname());
+				projectStatusTableObj.setStatus(projectStatus.getStatus());
+			userProjectStatusRepo.save(projectStatusTableObj);
+		
+		
+			return ResponseEntity.ok("statusUpdated");
+		}
+		catch(Exception e){
+			return (ResponseEntity<?>) ResponseEntity.internalServerError();
+		}
 	}
-
-
+}
 
 

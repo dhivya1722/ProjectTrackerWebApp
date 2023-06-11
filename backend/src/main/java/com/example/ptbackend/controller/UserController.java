@@ -100,14 +100,14 @@ public class UserController {
 	@GetMapping("/getuserforproject")
 	public List<UserWithStatus> getUserForProject(String projectname) {
 		
-		List<UserProjectStatus> userProjectsStatus = userProjectStatusRepo.findByname(projectname);
+		List<UserProjectStatus> userProjectsStatus = userProjectStatusRepo.findByprojectname(projectname);
 		int usersCount = userProjectsStatus.size();
 		
 		List<UserWithStatus> users= new ArrayList<UserWithStatus>();
 		for(int index=0 ;index<usersCount; index++){  
 			UserProjectStatus projectStatus = userProjectsStatus.get(index);
 			User user = userrepo.findByemail(projectStatus.getEmail());
-			UserWithStatus userWithStatus = new UserWithStatus(user.getEmail() , user.getName() , user.getRole() , projectStatus.getProjectStatus());;
+			UserWithStatus userWithStatus = new UserWithStatus(user.getEmail() , user.getName() , user.getRole() , projectStatus.getStatus());;
 //			userWithStatus.setStatus(projectStatus.getProjectStatus());
 	        users.add(userWithStatus);
 	    }

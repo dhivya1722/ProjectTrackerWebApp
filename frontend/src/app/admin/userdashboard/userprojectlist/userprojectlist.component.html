@@ -29,8 +29,8 @@
                     <td></td>
                     <td>
                         <select id="ddlYesNo" #status (change) = "statusChanged(project , status.value)">
-                            <option value= "yes">{{getStatusforIndex(0 ,project.status)}}</option>
-                            <option value= "no">{{getStatusforIndex(1 ,project.status)}}</option>
+                            <option value= "0">{{getStatusforIndex(0 ,project.status)}}</option>
+                            <option value= "1">{{getStatusforIndex(1 ,project.status)}}</option>
                             <!-- <option value={{getStatusforIndex(1 ,0)}}></option> -->
                         </select>
                     </td>

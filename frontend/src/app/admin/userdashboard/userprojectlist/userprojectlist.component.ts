@@ -39,8 +39,15 @@ export class UserprojectlistComponent implements OnInit {
     this.router.navigate(['/displayprojectlist' , projectName])
   }
 
-  statusChanged(project : Projectwithstatus , newstatus : string) {
-    console.log(newstatus)
+  statusChanged(project : Projectwithstatus , selectedOptionStr : string) {
+    const selectedOption = Number(selectedOptionStr)
+    const newStatusCode = this.getStatusCodeForIndex(selectedOption , project.status)
+    this.projectservice.updateProjectStatus(project , this.userEmail! , newStatusCode).subscribe((data:any)=>{
+      console.log(data)
+      alert("Status Updated Successfully")
+      // this.projectList=data;  
+
+    },error=>alert("Status update failed"))
   }
 
   getStatusFromStatusCode(code : number) : string {
@@ -52,13 +59,17 @@ export class UserprojectlistComponent implements OnInit {
   }
 
   getStatusforIndex(index : number , statuscode : number):string{
+    return this.getStatusFromStatusCode(this.getStatusCodeForIndex(index , statuscode))
+  }
+
+  getStatusCodeForIndex(index : number , statuscode : number):number{
     if (index == 0) {
-      return this.getStatusFromStatusCode(statuscode)
+      return statuscode
     }else{
       if (statuscode == 0){
-        return this.getStatusFromStatusCode(1)
+        return 1
       }else{
-        return this.getStatusFromStatusCode(0)
+        return 0
       }
     }
   }
