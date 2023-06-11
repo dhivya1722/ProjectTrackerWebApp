@@ -18,12 +18,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor= 'let project of projectList'>
+                <tr *ngFor= 'let project of projectList' (click)="openProjectDetailPage(project)">
                     
                    
 
-                    <a href="displayprojectlist" routerLink= "/displayprojectlist" ><td> {{project.projectname}}</td> </a>
-                    <!-- <td> {{project.projectname}}</td>  -->
+                    <!-- <a href="displayprojectlist" routerLink= "/displayprojectlist" ><td> {{project.projectname}}</td> </a> -->
+                    <td> {{project.projectname}}</td> 
                     <td>{{ project.startdate}}</td>
                     <td>{{ project.enddate}}</td>
                     <td></td>

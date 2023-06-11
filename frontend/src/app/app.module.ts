@@ -53,8 +53,8 @@ const routes:Routes = [
   {path:'userlist',component:UserlistComponent},
   {path:'projectlist',component:ProjectListComponent},
   {path:'addprojects',component:AddProjectsComponent},
-  {path:'displayprojectlist',component:DisplayProjectlistComponent},
-  {path:'displayuserlist',component:DisplayUserlistComponent},
+  {path:'displayprojectlist/:projectName',component:DisplayProjectlistComponent},
+  {path:'displayuserlist/:userEmail',component:DisplayUserlistComponent},
   {path:'userdashboard',component:UserdashboardComponent}
 
 ]

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ptbackend.model.Project;
 import com.example.ptbackend.model.User;
 import com.example.ptbackend.model.UserProjectStatus;
+import com.example.ptbackend.model.UserWithStatus;
 import com.example.ptbackend.repository.UserProjectStatusRepo;
 import com.example.ptbackend.repository.UserRepo;
 
@@ -96,19 +97,20 @@ public class UserController {
 		return (ResponseEntity<?>) ResponseEntity.internalServerError();
 	}
 
-
 	@GetMapping("/getuserforproject")
-	public List<User> getUserForProject(String projectname) {
+	public List<UserWithStatus> getUserForProject(String projectname) {
 		
 		List<UserProjectStatus> userProjectsStatus = userProjectStatusRepo.findByname(projectname);
 		int usersCount = userProjectsStatus.size();
 		
-		List<User> users= new ArrayList<User>();
+		List<UserWithStatus> users= new ArrayList<UserWithStatus>();
 		for(int index=0 ;index<usersCount; index++){  
-			String userEmail = userProjectsStatus.get(index).getEmail();
-			User user = userrepo.findByemail(userEmail);
-	        users.add(user);
-	    } 
+			UserProjectStatus projectStatus = userProjectsStatus.get(index);
+			User user = userrepo.findByemail(projectStatus.getEmail());
+			UserWithStatus userWithStatus = new UserWithStatus(user.getEmail() , user.getName() , user.getRole() , projectStatus.getProjectStatus());;
+//			userWithStatus.setStatus(projectStatus.getProjectStatus());
+	        users.add(userWithStatus);
+	    }
 		
 		return users;
 	}
