@@ -1,0 +1,98 @@
+<html>
+  <head>
+
+
+  </head>
+
+  <body>
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <h2>Add Project</h2>
+
+       
+      <section class="addproject block-block">
+        <div class="container">
+          <div class="row ">
+            <div class="col addproject-sec">
+              <form class="addproject-form" action="" #f="ngForm" novalidate (ngSubmit)="f.form.valid&&onSubmit()" >
+                <div class="form-group">
+                  <label for class="text-uppercase">Project Name</label>
+                  <input type="projectname" class="form-control"
+                    name="projectname" id="projectname"
+                    placeholder="Project Name" [(ngModel)]="project.projectname" #projectname="ngModel" required >
+                    <span class="text-danger" *ngIf="this.submit&&projectname.errors?.['required']">
+                      Project Name  is required.
+                  </span>
+                </div>
+             
+              
+
+              <!--main-->
+              <!--<div class="form-group" > --> 
+                <form>
+           
+                  <label class="text-uppercase">Team members</label>
+                  <select class="form-control"(change)="userListUpdated($event)" name="projects" class="form-control"  [(ngModel)]="selectedUsersEmail" #team="ngModel" required  multiple>
+                    <option  value="" disabled selected>Select an member</option>
+                    <option *ngFor="let user of userList">
+                      {{user.email}}
+
+                    </option>
+                  </select>
+                
+                </form>
+                  
+    <!--</div>-->
+
+               <!--<div>
+                <label class="text-uppercase">Team members</label>
+               </div>
+                <mat-form-field>
+                  <mat-label> Select an Team member</mat-label>
+                  <mat-select class="form-control" (selectionChange)="userListUpdated($event)">
+                    <mat-option *ngFor="let user of userList"  >
+                      {{user.email}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>-->
+                 
+          
+              
+                
+               <div class="form-group">
+                  <label class="text-uppercase">Date</label>
+                  </div>
+                <mat-form-field>
+                  <mat-date-range-input [rangePicker]="picker"  (closed)="dateChanged($event)"  class="form-control" > 
+                    <input matStartDate placeholder="Start date" name="startdate"   [(ngModel)]="project.startdate" #startdate="ngModel" required   >
+                    <input matEndDate placeholder="End date" name="enddate" [(ngModel)]="project.enddate" #enddate="ngModel" required >
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+
+
+               
+
+              
+          
+
+             
+
+                <div class="form-group">
+                  <input type="submit" class="form-control" class="btn btn-submit float-center"
+                    value="submit" (click)="submit=true">
+                </div>
+              </form>
+          </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+</body>
+</html>

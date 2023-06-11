@@ -1,0 +1,34 @@
+<mat-sidenav-container>
+    <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+        <h2>User List</h2>
+        <hr>
+        
+        <table class = "table table-borderless">
+            <thead>
+                <tr>
+                    
+                    <th> Name</th>
+                    <th> Email </th>
+                    <th> Project Name<th>
+                   
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let signupdata of usersList" >
+                    <a href="displayuserlist" routerLink= "/displayuserlist" ><td> {{signupdata.name}}</td> </a>
+                    <!-- <td> {{signupdata.name}}</td> -->
+                    <td>{{signupdata.email}}</td>
+           
+                    
+                   
+                </tr>
+            </tbody>
+            
+            
+        </table>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

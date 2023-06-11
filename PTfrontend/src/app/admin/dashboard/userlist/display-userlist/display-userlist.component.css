@@ -1,0 +1,26 @@
+.content {
+    height: calc(100vh - 130px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    text-align: center;
+    padding: 16px;
+    overflow: auto;
+  }
+  mat-divider {
+    
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  div{
+    text-align: left;
+  }
+  hr {
+    border: none;
+    height: 3px;
+    background-color: black ;
+  }
+  h6{
+    text-align: left;
+  }
