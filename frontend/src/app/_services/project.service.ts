@@ -16,6 +16,7 @@ export class ProjectService {
  private getAllUsersAPIPath="http://localhost:8084/user/getallusers"
   private addProjectAPIPath="http://localhost:8084/user/addproject"
   private getAllProjectAPIPath="http://localhost:8084/user/getallproject"
+  private getUserForProjectAPIPath = "http://localhost:8084/user/getuserforproject"
   http: any;
   constructor(private router:Router,private httpClient:HttpClient) { }
 
@@ -61,6 +62,18 @@ export class ProjectService {
     params = params.append('useremail' , userEmail)
 
     return this.httpClient.get(`${this.getAllProjectForUserAPIPath}` ,{params});
+
+
+  }
+
+
+  getUserForProject(projectName : string):Observable<object>{
+
+    let params = new HttpParams();
+
+    params = params.append('projectname' , projectName)
+
+    return this.httpClient.get(`${this.getUserForProjectAPIPath}` ,{params});
 
 
   }
