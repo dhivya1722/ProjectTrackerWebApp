@@ -13,7 +13,9 @@ export class UserdashboardComponent implements OnInit {
   constructor(private auth:AuthService,private http:HttpClient,private router:Router) { }
   
   ngOnInit(): void {
-   this.auth.canAccessUserPage();
+   if (!this.auth.canAccessUserPage()){
+    this.auth.showDashboard();
+   }
    
   }
 

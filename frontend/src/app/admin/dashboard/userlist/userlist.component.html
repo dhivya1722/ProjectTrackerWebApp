@@ -10,16 +10,16 @@
                     
                     <th> Name</th>
                     <th> Email </th>
-                    <th> Project Name<th>
+                   
                    
                     
                     
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor= "let signupdata of usersList" >
-                    <a href="displayuserlist" routerLink= "/displayuserlist" ><td> {{signupdata.name}}</td> </a>
-                    <!-- <td> {{signupdata.name}}</td> -->
+                <tr *ngFor= "let signupdata of usersList"  (click)="openUserDetailPage(signupdata)" >
+                    <!-- <a href="displayuserlist" routerLink= "/displayuserlist" ><td> {{signupdata.name}}</td> </a> -->
+                    <td> {{signupdata.name}}</td>
                     <td>{{signupdata.email}}</td>
            
                     

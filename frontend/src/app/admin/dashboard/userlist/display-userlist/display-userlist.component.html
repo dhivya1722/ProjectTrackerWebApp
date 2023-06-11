@@ -5,12 +5,13 @@
         <h2>  Each User's Project List</h2>
         <hr>
         <div>
-            <label><b>Username:</b></label>
+            <!-- <label><b>User Name : {{userName}}</b></label> -->
+            <label><b>User Email : {{userEmail}}</b></label>
         </div>
         <!-- <div>
             <label>Projectname's:</label>
         </div> -->
-    <h6><b>Project List:</b></h6>
+    <h6><b>Project List:</b></h6>  
     <table class = "table table-hover">
         <thead>
             <tr>
@@ -18,20 +19,23 @@
                 <th> Project Name</th>
                 <th> Start Date </th>
                 <th> End Date </th>
+                <th> Status </th>
+                <th> User Count</th>
+              
                
                 
             </tr>
         </thead>
         <tbody>
-           
-             <tr></tr>
-                <td></td>
+            <tr *ngFor= 'let project of projectList'>
+                <!-- <a href="displayprojectlist" routerLink= "/displayprojectlist" ><td> {{project.projectname}}</td> </a> -->
+                <td> {{project.projectname}}</td> 
+                <td>{{ project.startdate}}</td>
+                <td>{{ project.enddate}}</td>
+                <td>{{ getStatusFor(project)}}</td>
+                <td>{{ getUserCount(project.users)}}</td>
                
-               
-               
-                
-               
-            
+            </tr> 
         </tbody>
     </table>
     </div>

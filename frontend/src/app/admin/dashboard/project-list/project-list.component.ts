@@ -40,21 +40,15 @@ export class ProjectListComponent  {
  
 
   ngOnInit(): void {
+
+    if (!this.auth.canAccessAdminPage()){
+      this.auth.showProjectList();
+     }
    
-    if (this.auth.isAdmin()){
-      this.projectservice.getAllProject(new Project).subscribe((data:any)=>{
-        console.log(data)
-        this.projectList=data;
-  
-      })
-    }else {
-      const email = this.userEmail !== null ? this.userEmail! : ' '
-      this.projectservice.getProjectForUser(email).subscribe((data:any)=>{
-        console.log(data)
-        this.projectList=data;
-  
-      }
-      )
-    }
+    this.projectservice.getAllProject(new Project).subscribe((data:any)=>{
+      console.log(data)
+      this.projectList=data;
+
+    })
   }
 }

@@ -36,7 +36,16 @@ export class DisplayProjectlistComponent implements OnInit {
 
 
   getStatusFor(user : Userwithstatus):string {
-   // return user.getStatusStr()
-   return "open"
+   //return user.getStatusStr()
+   if (user.status == 0) {
+      return 'Open'
+    }else if (user.status == 1){
+       return 'Closed'
+    }else if (user.status == 2){
+      return 'In Progress'
+    }else{
+      return '-----'
+    }
+  //  return "open";
   }
 }

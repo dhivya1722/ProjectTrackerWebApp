@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { ProjectService } from 'src/app/_services/project.service';
-import { Project } from 'src/app/project';
-import { SignupData } from 'src/app/signup-data';
+import { Projectwithstatus } from 'src/app/projectwithstatus';
+import { Userwithstatus } from 'src/app/userwithstatus';
 
 @Component({
   selector: 'app-display-userlist',
@@ -12,26 +13,48 @@ import { SignupData } from 'src/app/signup-data';
 export class DisplayUserlistComponent implements OnInit{
 
 
-  signupdata:SignupData=new SignupData()
-  project:Project=new Project()
-  projectlist: any;
   
+   projectList: Projectwithstatus[] = [];
   
+  //  project : Project
 
+   userEmail : string = "email"
+   userName : string = "name"
 
-
-
-  constructor(private projectservice:ProjectService){}
-
-
-
-
-
-
-
-
-
-  ngOnInit(): void {
-   
+  constructor(private route: ActivatedRoute , private projectservice:ProjectService , private auth:AuthService , private router: Router) {
+      
   }
+  ngOnInit(): void {
+    // const projectName  = this.project.projectname;
+    this.userEmail = this.route.snapshot.params['userEmail'];
+    // this.userName = this.route.snapshot.params['userName'];
+    // console.log(this.userEmail);
+
+
+    this.projectservice.getProjectForUser(this.userEmail).subscribe((data:any)=>{
+        console.log(data)
+        this.projectList=data;
+      })
+
+  }
+
+  getUserCount(userEmails :string[]) : number {
+    return userEmails.length
+  }
+
+
+  getStatusFor(user : Projectwithstatus):string {
+   //return user.getStatusStr()
+   if (user.status == 0) {
+    return 'Open'
+  }else if (user.status == 1){
+    return 'Closed'
+  }else if (user.status == 2){
+    return 'In Progress'
+  }else{
+   return '-----'
+  } 
+  //  return "open";
+  }
+
 }

@@ -1,0 +1,46 @@
+<!-- <router-outlet></router-outlet> -->
+<mat-sidenav-container>
+
+    <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+        <h2>Project List</h2>
+        
+        <hr>
+        <table class = "table table-borderless">
+            <thead>
+                <tr>
+                    
+                    <th> Project Name</th>
+                    <th> Start Date </th>
+                    <th> End Date<th>
+                    <th> status</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= 'let project of projectList'>
+                    
+                   
+
+                    <!-- <a href="displayprojectlist" routerLink= "/displayprojectlist" ><td> {{project.projectname}}</td> </a> -->
+                    <td> {{project.projectname}}</td> 
+                    <td>{{ project.startdate}}</td>
+                    <td>{{ project.enddate}}</td>
+                    <td></td>
+                    <td>
+                        <select id="ddlYesNo" #status (change) = "statusChanged(project , status.value)">
+                            <option value= "yes">{{getStatusforIndex(0 ,project.status)}}</option>
+                            <option value= "no">{{getStatusforIndex(1 ,project.status)}}</option>
+                            <!-- <option value={{getStatusforIndex(1 ,0)}}></option> -->
+                        </select>
+                    </td>
+                   
+                   
+                    </tr>
+                   
+                
+            </tbody>
+        </table> 
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

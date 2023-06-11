@@ -16,8 +16,10 @@ public interface UserProjectStatusRepo  extends JpaRepository<UserProjectStatus,
 	
 	List<UserProjectStatus> findByprojectid(Object projectid);
 	
-	UserProjectStatus findByEmailAndProjectid(Object email , Object projectid);
+	UserProjectStatus findByEmailAndName(Object email , Object name);
 
 	List<UserProjectStatus> findByname(String projectname);
+	
+	
 
 }

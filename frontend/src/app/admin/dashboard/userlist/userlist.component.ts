@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { ProjectService } from 'src/app/_services/project.service';
 import { Project } from 'src/app/project';
@@ -20,9 +21,15 @@ export class UserlistComponent implements OnInit{
 
 
 
-  constructor(private auth:AuthService,private projectservice:ProjectService){}
+  constructor(private auth:AuthService,private projectservice:ProjectService,private router : Router){}
 
-  
+  openUserDetailPage(signupdata:SignupData){
+    console.log(signupdata);
+    const userEmail = signupdata.email
+    const userName = signupdata.name
+    this.router.navigate(['/displayuserlist' , userEmail])
+  }
+ 
   
 
 

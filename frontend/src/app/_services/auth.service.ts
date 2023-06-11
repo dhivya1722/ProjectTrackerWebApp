@@ -34,21 +34,23 @@ export class AuthService {
 }
 
 
-canaccess(role: string){
+canaccess(role: string):boolean{
   if (!this.isauthenticated()) {
       //redirect to login
       this.router.navigate(['/login']);
+      return false
   }else if (role != sessionStorage.getItem('role')){
-    this.showDashboard()
+    return false
   }
+  return true
 }
 
-canAccessAdminPage(){
-  this.canaccess('Admin')
+canAccessAdminPage() : boolean{
+  return this.canaccess('Admin')
 }
 
-canAccessUserPage(){
-  this.canaccess('User')
+canAccessUserPage() : boolean{
+  return this.canaccess('User')
 }
 
 isAdmin() : boolean{
@@ -75,6 +77,13 @@ showDashboard(){
     }
 }
 
+showProjectList(){
+  if (this.isAdmin()){
+    this.router.navigate(['/projectlist']);
+    }else {
+      this.router.navigate(['/userprojectlist']);
+    }
+}
 
  loginuser(user:User):Observable<object>{
   

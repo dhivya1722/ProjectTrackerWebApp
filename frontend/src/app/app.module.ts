@@ -36,6 +36,7 @@ import { RegisterComponent } from './admin/register/register.component';
 import { DisplayProjectlistComponent } from './admin/dashboard/project-list/display-projectlist/display-projectlist.component';
 import { DisplayUserlistComponent } from './admin/dashboard/userlist/display-userlist/display-userlist.component';
 import { UserdashboardComponent } from './admin/userdashboard/userdashboard.component';
+import { UserprojectlistComponent } from './admin/userdashboard/userprojectlist/userprojectlist.component';
 
 
 
@@ -55,7 +56,8 @@ const routes:Routes = [
   {path:'addprojects',component:AddProjectsComponent},
   {path:'displayprojectlist/:projectName',component:DisplayProjectlistComponent},
   {path:'displayuserlist/:userEmail',component:DisplayUserlistComponent},
-  {path:'userdashboard',component:UserdashboardComponent}
+  {path:'userdashboard',component:UserdashboardComponent},
+  {path:'userprojectlist',component:UserprojectlistComponent}
 
 ]
 
@@ -74,6 +76,7 @@ const routes:Routes = [
     DisplayProjectlistComponent,
     DisplayUserlistComponent,
     UserdashboardComponent,
+    UserprojectlistComponent,
  
    
   

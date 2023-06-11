@@ -21,7 +21,9 @@ export class DashboardComponent implements OnInit {
   constructor(private auth:AuthService,private http:HttpClient,private router:Router) { }
   
   ngOnInit(): void {
-   this.auth.canAccessAdminPage();
+   if (!this.auth.canAccessAdminPage()){
+    this.auth.showDashboard();
+   }
   }
 
   logout(){
