@@ -45,6 +45,12 @@ public class UserController {
 		return userrepo.findByRole("user");
 	
 	}
+	@GetMapping("/getalladmins")
+	public List<User>getAllAdmins(){
+		System.out.println("received successfully");
+		return userrepo.findByRole("admin");
+	
+	}
 	
 //	@GetMapping("/getallusers")
 //	
